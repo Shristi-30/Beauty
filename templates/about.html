@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block title %}| About Us{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h1 class="display-4 mb-4">About Shristi Beauty Store</h1>
+            <p class="lead mb-5">Your premier destination for quality makeup products</p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/store.jpg') }}" alt="About Shristi Beauty Store" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <h2 class="mb-4">Our Story</h2>
+            <p>Founded in 2005, Shristi Beauty Store was born from a passion for high-quality, accessible makeup products. Our founder, a professional makeup artist, was frustrated with the lack of affordable yet effective products in the market.</p>
+            <p>What started as a small online shop has now grown into a thriving community of beauty enthusiasts, makeup artists, and customers who share our vision of making beauty accessible to everyone.</p>
+            <p>At Shristi Beauty, we believe that everyone deserves to feel confident and beautiful in their own skin. That's why we offer a carefully curated selection of products that cater to diverse skin tones, types, and preferences.</p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-12 text-center">
+            <h2 class="mb-4">Our Values</h2>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-leaf fa-3x text-primary mb-3"></i>
+                    <h3>Quality</h3>
+                    <p>We prioritize quality in every product we offer. Each item is carefully selected to ensure it meets our high standards.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                    <h3>Inclusivity</h3>
+                    <p>We believe in beauty for everyone. Our products cater to diverse skin tones and types, ensuring that everyone can find something that works for them.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-rabbit fa-3x text-primary mb-3">></i>
+                    <h3>Cruelty-Free</h3>
+                    <p>We are committed to ethical practices. All our products are cruelty-free, and we continue to expand our range of vegan options.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4">Meet Our Team</h2>
+            <p class="mb-5">Behind Shristi Beauty Store is a dedicated team of beauty enthusiasts, industry experts, and customer service professionals who work tirelessly to bring you the best products and shopping experience.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 text-center mb-4">
+            <div class="card border-0">
+                <img src="{{ url_for('static', filename='images/photo1.jpg') }}" class="card-img-top rounded-circle mx-auto" style="width: 150px; height: 150px; object-fit: cover;" alt="Jane Doe">
+                <div class="card-body">
+                    <h5 class="card-title">Shristi Rijal</h5>
+                    <p class="card-text text-muted">Founder & CEO</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card border-0">
+                <img src="{{ url_for('static', filename='images/photo2.jpg') }}" class="card-img-top rounded-circle mx-auto" style="width: 150px; height: 150px; object-fit: cover;" alt="John Smith">
+                <div class="card-body">
+                    <h5 class="card-title">Shikshya Rijal</h5>
+                    <p class="card-text text-muted">Product Curator</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card border-0">
+                <img src="{{ url_for('static', filename='images/photo3.jpg') }}" class="card-img-top rounded-circle mx-auto" style="width: 150px; height: 150px; object-fit: cover;" alt="Emily Johnson">
+                <div class="card-body">
+                    <h5 class="card-title">Sabina Poudel</h5>
+                    <p class="card-text text-muted">Beauty Expert</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

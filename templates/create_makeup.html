@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+
+{% block title %}| Add Makeup Product{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center">Add New Makeup Product</h1>
+            <p class="text-center text-muted">Create a new listing for your makeup product</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('create_makeup') }}">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option value="" selected disabled>Select a category</option>
+                                <option value="Foundation">Foundation</option>
+                                <option value="Primer">Primer</option>
+                                <option value="Concealer">Concealer</option>
+                                <option value="Mascara">Mascara</option>
+                                <option value="Lipstick">Lipstick</option>
+                                <option value="Eyeshadow">Eyeshadow</option>
+                                <option value="Blush">Blush</option>
+                                <option value="Powder">Powder</option>
+                                <option value="Bronzer">Bronzer</option>
+                                <option value="Highlighter">Highlighter</option>
+                                <option value="Lip Gloss">Lip Gloss</option>
+                                <option value="Skincare">Skincare</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price (Rs)</label>
+                            <input type="number" class="form-control" id="price" name="price" step="0.01" min="0.01" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="stock" class="form-label">Stock Quantity</label>
+                            <input type="number" class="form-control" id="stock" name="stock" min="1" value="1" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="image_url" class="form-label">Select Product Image</label>
+                            <select class="form-select" id="image_url" name="image_url" required>
+                                <option value="images/foundation1.jpg">Foundation</option>
+                                <option value="images/primer1.jpg">Primer</option>
+                                <option value="images/concealer1.jpg">Concealer</option>
+                                <option value="images/mascara1.jpg">Mascara</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <div id="image-preview" class="text-center">
+                                <p>Image Preview:</p>
+                                <img id="preview-img" src="{{ url_for('static', filename='images/foundation1.jpg') }}" alt="Preview" class="img-fluid" style="max-height: 200px;">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Product Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Add Product</button>
+                            <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Image preview functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageSelect = document.getElementById('image_url');
+        const previewImg = document.getElementById('preview-img');
+        
+        if (imageSelect && previewImg) {
+            // Update preview when selection changes
+            imageSelect.addEventListener('change', function() {
+                previewImg.src = "{{ url_for('static', filename='') }}" + this.value;
+            });
+        }
+    });
+</script>
+{% endblock %}

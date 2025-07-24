@@ -1,0 +1,1098 @@
+{% extends 'layout.html' %}
+
+{% block title %}| Home{% endblock %}
+
+{% block content %}
+<section class="hero-section py-5 text-center bg-light rounded mb-4">
+    <div class="container">
+        <h1 class="display-4">Welcome to Shristi Beauty Store</h1>
+        <p class="lead">Discover premium makeup products for every look.</p>
+        {% if not g.user %}
+            <div class="mt-4">
+                <a href="{{ url_for('register') }}" class="btn btn-primary me-2">Sign Up</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-primary">Login</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<div class="row mb-4">
+    <div class="col-md-9">
+        <h2>Products Available</h2>
+    </div>
+    <div class="col-md-3">
+        <select class="form-select" id="categoryFilter">
+            <option value="All Categories" selected>All Categories</option>
+            <option value="Foundation">Foundation</option>
+            <option value="Primer">Primer</option>
+            <option value="Concealer">Concealer</option>
+            <option value="Mascara">Mascara</option>
+            <option value="Lipstick">Lipstick</option>
+            <option value="Eyeshadow">Eyeshadow</option>
+            <option value="Blush">Blush</option>
+            <option value="Powder">Powder</option>
+            <option value="Bronzer">Bronzer</option>
+            <option value="Highlighter">Highlighter</option>
+            <option value="Lip Gloss">Lip Gloss</option>
+            <option value="Skincare">Skincare</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+</div>
+
+<!-- Replace this section in your HTML -->
+<div class="row g-4" id="featuredProducts">
+    <!-- Foundation Product Card -->
+    <div class="col-md-3 product-item" data-category="Foundation">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/foundation.jpg') }}" class="card-img-top" alt="Foundation">
+            <div class="card-body">
+                <h5 class="card-title">Premium Foundation</h5>
+                <p class="card-text text-muted">Foundation</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-primary fw-bold"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Primer Product Card -->
+    <div class="col-md-3 product-item" data-category="Primer">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/primer.jpg') }}" class="card-img-top" alt="Primer">
+            <div class="card-body">
+                <h5 class="card-title">Makeup Primer</h5>
+                <p class="card-text text-muted">Primer</p>
+                <div class="d-flex justify-content-between align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Concealer Product Card -->
+    <div class="col-md-3 product-item" data-category="Concealer">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/concealer1.jpg') }}" class="card-img-top" alt="Concealer">
+            <div class="card-body">
+                <h5 class="card-title">Long-lasting Concealer</h5>
+                <p class="card-text text-muted">Concealer</p>
+                <div class="d-flex justify-content-between align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mascara Product Card -->
+    <div class="col-md-3 product-item" data-category="Mascara">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/mascara.webp') }}" class="card-img-top" alt="Mascara">
+            <div class="card-body">
+                <h5 class="card-title">Volumizing Mascara</h5>
+                <p class="card-text text-muted">Mascara</p>
+                <div class="d-flex justify-content-between align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lipstick Product Card -->
+    <div class="col-md-3 product-item" data-category="Lipstick">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/lipstick.jpg') }}" class="card-img-top" alt="lipstick">
+            <div class="card-body">
+                <h5 class="card-title">Smudge-proof Lipstick</h5>
+                <p class="card-text text-muted">Lipstick</p>
+                <div class="d-flex justify-content-between align-items-center">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Eyeshadow Product Card -->
+    <div class="col-md-3 product-item" data-category="Eyeshadow">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/eyeshadow.jpg') }}" class="card-img-top" alt="Eyeshadow">
+            <div class="card-body">
+                <h5 class="card-title">Colorful Eyeshadow</h5>
+                <p class="card-text text-muted">Eyeshadow</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-primary fw-bold"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Blush Product Card -->
+     <div class="col-md-3 product-item" data-category="Blush">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/blush.jpg') }}" class="card-img-top" alt="Blush">
+            <div class="card-body">
+                <h5 class="card-title">Rosy Blush</h5>
+                <p class="card-text text-muted">Blush</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-primary fw-bold"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Powder Product Card -->
+    <div class="col-md-3 product-item" data-category="Powder">
+        <div class="card h-100 product-card shadow-sm">
+        <img src="{{ url_for('static', filename='images/powder.jpg') }}" class="card-img-top" alt="Powder">
+        <div class="card-body">
+            <h5 class="card-title">Setting Powder</h5>
+            <p class="card-text text-muted">Powder</p>
+            <div class="d-flex justify-content-between align-items-center">
+            <span class="text-primary fw-bold"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+      <!-- Bronzer Product Card -->
+      <div class="col-md-3 product-item" data-category="Bronzer">
+        <div class="card h-100 product-card shadow-sm">
+            <img src="{{ url_for('static', filename='images/bronzer.jpg') }}" class="card-img-top" alt="Blush">
+            <div class="card-body">
+                <h5 class="card-title">Bronzer</h5>
+                <p class="card-text text-muted">Bronzer</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="text-primary fw-bold"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row flex-nowrap overflow-auto">
+      <!-- Highlighter Card -->
+      <div class="col-3">
+        <div class="card product-card shadow-sm">
+          <img src="{{ url_for('static', filename='images/highlighter.jpg') }}" class="card-img-top" alt="Highlighter">
+          <div class="card-body">
+            <h5 class="card-title">Illuminator</h5>
+            <p class="card-text text-muted">Highlighter</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lipgloss Card -->
+      <div class="col-3">
+        <div class="card product-card shadow-sm">
+          <img src="{{ url_for('static', filename='images/lipgloss.jpg') }}" class="card-img-top" alt="lipgloss">
+          <div class="card-body">
+            <h5 class="card-title">Shiny Lipgloss</h5>
+            <p class="card-text text-muted">Lipgloss</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Skincare Card -->
+      <div class="col-3">
+        <div class="card product-card shadow-sm">
+          <img src="{{ url_for('static', filename='images/skincare.jpg') }}" class="card-img-top" alt="skincare">
+          <div class="card-body">
+            <h5 class="card-title">Skincare</h5>
+            <p class="card-text text-muted">Skincare</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Other Card -->
+      <div class="col-3">
+        <div class="card product-card shadow-sm">
+          <img src="{{ url_for('static', filename='images/other.jpg') }}" class="card-img-top" alt="other">
+          <div class="card-body">
+            <h5 class="card-title">Other</h5>
+            <p class="card-text text-muted">Other</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Foundation Section -->
+<div class="mt-5 mb-4 category-section" data-category="Foundation">
+    <h2>Premium Foundation</h2>
+    <p class="text-muted">Ability to match your skin tone, provide coverage levels from light to full, and come in various finishes like matte, dewy, or satin depending on desired look and skin type.</p>
+
+    <div class="row g-4">
+        <!-- Foundation 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/foundation1.jpg') }}" class="card-img-top" alt="Fit Me">
+                <div class="card-body">
+                    <h5 class="card-title">Fit Me Foundation</h5>
+                    <p class="card-text text-muted">Foundation</p>
+                    <p class="card-text small">Blur imperfections, reduce shine, and achieve a flawless matte finish that lasts throughout the day</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs3000</span>
+                        <form action="{{ url_for('view_static_product', product_type='Foundation') }}" method="post">
+                            <input type="hidden" name="product_type" value="Foundation">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foundation 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/foundation2.jpg') }}" class="card-img-top" alt="Elf Foundation">
+                <div class="card-body">
+                    <h5 class="card-title">Elf</h5>
+                    <p class="card-text text-muted">Foundation</p>
+                    <p class="card-text small">Lightweight liquid foundation with a natural finish.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs1950</span>
+                        <form action="{{ url_for('view_static_product', product_type='foundation_elf') }}" method="post">
+                            <input type="hidden" name="product_type" value="foundation_elf">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foundation 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/foundation3.jpg') }}" class="card-img-top" alt="fenty beauty">
+                <div class="card-body">
+                    <h5 class="card-title">Fenty Beauty</h5>
+                    <p class="card-text text-muted">Foundation</p>
+                    <p class="card-text small">Hydrates with sodium hyaluronate. Instantly blurs + evens skin. Shine free. Longwear.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2800</span>
+                        <form action="{{ url_for('view_static_product', product_type='foundation_fenty') }}" method="post">
+                            <input type="hidden" name="product_type" value="foundation_fenty">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>                 
+    </div>
+</div>
+
+<!-- Primer Section -->
+<div class="mt-5 mb-4 category-section" data-category="Primer">
+    <h2>Makeup Primers</h2>
+    <p class="text-muted">Create the perfect canvas for your makeup with our premium primers</p>
+    <div class="row g-4">
+        <!-- Primer 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/primer1.jpg') }}" class="card-img-top" alt="Benefit POREfessional Primer">
+                <div class="card-body">
+                    <h5 class="card-title">Elf</h5>
+                    <p class="card-text text-muted">Primer</p>
+                    <p class="card-text small">Minimizes the appearance of pores and creates a smooth makeup base.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2500</span>
+                        <form action="{{ url_for('view_static_product', product_type='primer_benefit') }}" method="post">
+                            <input type="hidden" name="product_type" value="primer_benefit">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primer 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/primer2.webp') }}" class="card-img-top" alt="Milk Makeup Hydro Grip Primer">
+                <div class="card-body">
+                    <h5 class="card-title">Milk Hydro Grip</h5>
+                    <p class="card-text text-muted">Primer</p>
+                    <p class="card-text small">Hydrating primer that helps makeup stay in place all day.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2200</span>
+                        <form action="{{ url_for('view_static_product', product_type='primer_milk') }}" method="post">
+                            <input type="hidden" name="product_type" value="primer_milk">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Primer 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/primer3.jpg') }}" class="card-img-top" alt="Smashbox Photo Finish Primer">
+                <div class="card-body">
+                    <h5 class="card-title">Smashbox Photo Finish</h5>
+                    <p class="card-text text-muted">Primer</p>
+                    <p class="card-text small">Blurs imperfections and creates a perfect base for makeup.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2800</span>
+                        <form action="{{ url_for('view_static_product', product_type='primer_smashbox') }}" method="post">
+                            <input type="hidden" name="product_type" value="primer_smashbox">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Concealer Section -->
+<div class="mt-5 mb-4 category-section" data-category="Concealer">
+    <h2>Concealers</h2>
+    <p class="text-muted">Cover imperfections and brighten your complexion with our premium concealers</p>
+    <div class="row g-4">
+        <!-- Concealer 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/concealer.jpg') }}" class="card-img-top" alt="NARS Radiant Creamy Concealer">
+                <div class="card-body">
+                    <h5 class="card-title">NARS Radiant Creamy</h5>
+                    <p class="card-text text-muted">Concealer</p>
+                    <p class="card-text small">Full-coverage concealer that brightens and perfects the skin.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2300</span>
+                        <form action="{{ url_for('view_static_product', product_type='concealer_nars') }}" method="post">
+                            <input type="hidden" name="product_type" value="concealer_nars">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concealer 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/concealer2.jpg') }}" class="card-img-top" alt="Tarte Shape Tape Concealer">
+                <div class="card-body">
+                    <h5 class="card-title">Tarte Shape Tape</h5>
+                    <p class="card-text text-muted">Concealer</p>
+                    <p class="card-text small">Cult-favorite concealer with incredible coverage and staying power.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2600</span>
+                        <form action="{{ url_for('view_static_product', product_type='concealer_tarte') }}" method="post">
+                            <input type="hidden" name="product_type" value="concealer_tarte">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concealer 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/concealer3.jpg') }}" class="card-img-top" alt="Maybelline Fit Me Concealer">
+                <div class="card-body">
+                    <h5 class="card-title">Maybelline Fit Me</h5>
+                    <p class="card-text text-muted">Concealer</p>
+                    <p class="card-text small">Lightweight concealer that blends seamlessly for a natural finish.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs1800</span>
+                        <form action="{{ url_for('view_static_product', product_type='concealer_maybelline') }}" method="post">
+                            <input type="hidden" name="product_type" value="concealer_maybelline">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mascara Section -->
+<div class="mt-5 mb-4 category-section" data-category="Mascara">
+    <h2>Mascaras</h2>
+    <p class="text-muted">Enhance your lashes with our collection of premium mascaras</p>
+    <div class="row g-4">
+        <!-- Mascara 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/mascara1.jpg') }}" class="card-img-top" alt="Sky High Mascara">
+                <div class="card-body">
+                    <h5 class="card-title">Sky High</h5>
+                    <p class="card-text text-muted">Mascara</p>
+                    <p class="card-text small">Iconic mascara that provides extreme volume and dramatic length.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2400</span>
+                        <form action="{{ url_for('view_static_product', product_type='mascara_toofaced') }}" method="post">
+                            <input type="hidden" name="product_type" value="mascara_toofaced">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mascara 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/mascara2.jpg') }}" class="card-img-top" alt="Benefit Roller Lash Mascara">
+                <div class="card-body">
+                    <h5 class="card-title">Benefit Roller Lash</h5>
+                    <p class="card-text text-muted">Mascara</p>
+                    <p class="card-text small">Curl-holding mascara that lifts and separates lashes.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2200</span>
+                        <form action="{{ url_for('view_static_product', product_type='mascara_benefit') }}" method="post">
+                            <input type="hidden" name="product_type" value="mascara_benefit">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mascara 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/mascara3.jpg') }}" class="card-img-top" alt="Maybelline Lash Sensational Mascara">
+                <div class="card-body">
+                    <h5 class="card-title">Maybelline Lash Sensational</h5>
+                    <p class="card-text text-muted">Mascara</p>
+                    <p class="card-text small">Fan-effect brush for full, fanned-out lashes with intense color.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs1900</span>
+                        <form action="{{ url_for('view_static_product', product_type='mascara_maybelline') }}" method="post">
+                            <input type="hidden" name="product_type" value="mascara_maybelline">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lipstick Section -->
+<div class="mt-5 mb-4 category-section" data-category="Lipstick">
+    <h2>Premium Lipsticks</h2>
+    <p class="text-muted">Lipstick features include texture, finish, color, and staying power. </p>
+
+    <div class="row g-4">
+        <!-- Lipstick 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/lipstick1.jpg') }}" class="card-img-top" alt="Maybelline Lipstick">
+                <div class="card-body">
+                    <h5 class="card-title">Maybelline New York</h5>
+                    <p class="card-text text-muted">Lipstick</p>
+                    <p class="card-text small">Liquid lipstick from Maybelline New York can last all day and night.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs1500</span>
+                        <form action="{{ url_for('view_static_product', product_type='lipstick_maybelline') }}" method="post">
+                            <input type="hidden" name="product_type" value="lipstick_maybelline">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lipstick 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/lipstick2.jpg') }}" class="card-img-top" alt="Wearified Lipstick">
+                <div class="card-body">
+                    <h5 class="card-title">Wearified</h5>
+                    <p class="card-text text-muted">Lipstick</p>
+                    <p class="card-text small">Wearified's website features product descriptions for their lipsticks, including the Lip Frosting Matte Liquid Lipstick and the Butter To Matte Longwear Lipstick.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2000</span>
+                        <form action="{{ url_for('view_static_product', product_type='lipstick_wearified') }}" method="post">
+                            <input type="hidden" name="product_type" value="lipstick_wearified">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lipstick 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/lipstick3.jpg') }}" class="card-img-top" alt="Huda Beauty Lipstick">
+                <div class="card-body">
+                    <h5 class="card-title">Huda Beauty</h5>
+                    <p class="card-text text-muted">Lipstick</p>
+                    <p class="card-text small">Every Layer of Me.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2500</span>
+                        <form action="{{ url_for('view_static_product', product_type='lipstick_huda') }}" method="post">
+                            <input type="hidden" name="product_type" value="lipstick_huda">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>                 
+    </div>
+</div>
+
+
+<!-- Blush Section -->
+<div class="mt-5 mb-4 category-section" data-category="Blush">
+    <h2>Premium Blushes</h2>
+    <p class="text-muted">Add a natural flush of color to your cheeks with our premium blushes</p>
+    <div class="row g-4">
+        <!-- Blush 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/blush1.jpg') }}" class="card-img-top" alt="NARS Orgasm Blush">
+                <div class="card-body">
+                    <h5 class="card-title">NARS Orgasm Blush</h5>
+                    <p class="card-text text-muted">Blush</p>
+                    <p class="card-text small">Iconic peachy-pink blush with subtle golden shimmer.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2200</span>
+                        <form action="{{ url_for('view_static_product', product_type='blush_nars') }}" method="post">
+                            <input type="hidden" name="product_type" value="blush_nars">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blush 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/blush2.jpg') }}" class="card-img-top" alt="Benefit Cosmetics Dandelion Blush">
+                <div class="card-body">
+                    <h5 class="card-title">Benefit Dandelion</h5>
+                    <p class="card-text text-muted">Blush</p>
+                    <p class="card-text small">Soft, pale pink blush for a subtle, brightening effect.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs1950</span>
+                        <form action="{{ url_for('view_static_product', product_type='blush_benefit') }}" method="post">
+                            <input type="hidden" name="product_type" value="blush_benefit">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blush 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/blush3.webp') }}" class="card-img-top" alt="Milani Baked Blush">
+                <div class="card-body">
+                    <h5 class="card-title">Milani Baked Blush</h5>
+                    <p class="card-text text-muted">Blush</p>
+                    <p class="card-text small">Richly pigmented baked blush for a radiant flush of color.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs850</span>
+                        <form action="{{ url_for('view_static_product', product_type='blush_milani') }}" method="post">
+                            <input type="hidden" name="product_type" value="blush_milani">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Eyeshadow Section -->
+<div class="mt-5 mb-4 category-section" data-category="Eyeshadow">
+    <h2>Eyeshadow Palettes</h2>
+    <p class="text-muted">Create stunning eye looks with our premium eyeshadow palettes</p>
+    <div class="row g-4">
+        <!-- Eyeshadow 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/eyeshadow1.jpg') }}" class="card-img-top" alt="Urban Decay Naked Palette">
+                <div class="card-body">
+                    <h5 class="card-title">Urban Decay Naked</h5>
+                    <p class="card-text text-muted">Eyeshadow</p>
+                    <p class="card-text small">12 versatile neutral shades for endless looks.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs3500</span>
+                        <form action="{{ url_for('view_static_product', product_type='eyeshadow_urban') }}" method="post">
+                            <input type="hidden" name="product_type" value="eyeshadow_urban">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eyeshadow 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/eyeshadow2.jpg') }}" class="card-img-top" alt="Huda Beauty Rose Gold Palette">
+                <div class="card-body">
+                    <h5 class="card-title">Huda Beauty Rose Gold</h5>
+                    <p class="card-text text-muted">Eyeshadow</p>
+                    <p class="card-text small">Luxurious mix of mattes and shimmers in rose gold tones.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs4200</span>
+                        <form action="{{ url_for('view_static_product', product_type='eyeshadow_huda') }}" method="post">
+                            <input type="hidden" name="product_type" value="eyeshadow_huda">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eyeshadow 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/eyeshadow3.jpg') }}" class="card-img-top" alt="Morphe Nature Glow Palette">
+                <div class="card-body">
+                    <h5 class="card-title">Morphe Nature Glow</h5>
+                    <p class="card-text text-muted">Eyeshadow</p>
+                    <p class="card-text small">35 highly pigmented shades in warm, earthy tones.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2500</span>
+                        <form action="{{ url_for('view_static_product', product_type='eyeshadow_morphe') }}" method="post">
+                            <input type="hidden" name="product_type" value="eyeshadow_morphe">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Powder Section -->
+<div class="mt-5 mb-4 category-section" data-category="Powder">
+    <h2>Setting Powders</h2>
+    <p class="text-muted">Lock in your makeup with our premium setting powders</p>
+    <div class="row g-4">
+        <!-- Powder 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/powder1.jpg') }}" class="card-img-top" alt="Laura Mercier Translucent Powder">
+                <div class="card-body">
+                    <h5 class="card-title">Laura Mercier Translucent</h5>
+                    <p class="card-text text-muted">Setting Powder</p>
+                    <p class="card-text small">Lightweight powder that sets makeup and minimizes shine.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2800</span>
+                        <form action="{{ url_for('view_static_product', product_type='powder_laura') }}" method="post">
+                            <input type="hidden" name="product_type" value="powder_laura">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>          
+                </div>
+            </div>
+        </div>
+
+        <!-- Powder 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/powder2.jpg') }}" class="card-img-top" alt="HUDA Beauty Easy Bake Powder">
+                <div class="card-body">
+                    <h5 class="card-title">HUDA Beauty Easy Bake</h5>
+                    <p class="card-text text-muted">Setting Powder</p>
+                    <p class="card-text small">Brightening loose powder for crease-free makeup.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs3200</span>
+                        <form action="{{ url_for('view_static_product', product_type='powder_huda') }}" method="post">
+                            <input type="hidden" name="product_type" value="powder_huda">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Powder 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/powder3.jpg') }}" class="card-img-top" alt="Charlotte Tilbury Airbrush">
+                <div class="card-body">
+                    <h5 class="card-title">Charlotte Tilbury Airbrush</h5>
+                    <p class="card-text text-muted">Setting Powder</p>
+                    <p class="card-text small">Natural finish powder with a radiant glow.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-primary fw-bold">Rs2300</span>
+                        <form action="{{ url_for('view_static_product', product_type='powder_mac') }}" method="post">
+                            <input type="hidden" name="product_type" value="powder_mac">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bronzer Section -->
+    <div class="mt-5 mb-4 category-section" data-category="Bronzer">
+    <h2>Bronzers</h2>
+    <p class="text-muted">Add warmth and dimension to your complexion with our premium bronzers</p>
+        <div class="row g-4">
+        <!-- Bronzer 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 product-card shadow-sm">
+                <img src="{{ url_for('static', filename='images/bronzer1.jpg') }}" class="card-img-top" alt="Benefit Hoola Bronzer">
+                    <div class="card-body">
+                        <h5 class="card-title">Benefit Hoola</h5>
+                        <p class="card-text text-muted">Bronzer</p>
+                        <p class="card-text small">Matte bronzer for a natural sun-kissed glow.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-primary fw-bold">Rs2400</span>
+                            <form action="{{ url_for('view_static_product', product_type='bronzer_benefit') }}" method="post">
+                            <input type="hidden" name="product_type" value="bronzer_benefit">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    <!-- Bronzer 2 -->
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 product-card shadow-sm">
+        <img src="{{ url_for('static', filename='images/bronzer2.jpg') }}" class="card-img-top" alt="NARS Laguna Bronzer">
+            <div class="card-body">
+            <h5 class="card-title">NARS Laguna</h5>
+            <p class="card-text text-muted">Bronzer</p>
+            <p class="card-text small">Iconic bronzer with a subtle shimmer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                <span class="text-primary fw-bold">Rs2700</span>
+                <form action="{{ url_for('view_static_product', product_type='bronzer_nars') }}" method="post">
+                <input type="hidden" name="product_type" value="bronzer_nars">
+                <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bronzer 3 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/bronzer3.jpg') }}" class="card-img-top" alt="Physicians Formula Butter Bronzer">
+    <div class="card-body">
+    <h5 class="card-title">Physicians Formula Butter</h5>
+    <p class="card-text text-muted">Bronzer</p>
+    <p class="card-text small">Creamy bronzer with a natural, sun-kissed finish.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1800</span>
+        <form action="{{ url_for('view_static_product', product_type='bronzer_physicians') }}" method="post">
+            <input type="hidden" name="product_type" value="bronzer_physicians">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Highlighter Section -->
+    <div class="mt-5 mb-4 category-section" data-category="Highlighter">
+    <h2>Highlighters</h2>
+    <p class="text-muted">Illuminate your features with our radiant highlighters</p>
+    <div class="row g-4">
+    <!-- Highlighter 1 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/highlighter1.jpg') }}" class="card-img-top" alt="Fenty Beauty Killawatt">
+    <div class="card-body">
+    <h5 class="card-title">Fenty Killawatt</h5>
+    <p class="card-text text-muted">Highlighter</p>
+    <p class="card-text small">Intense shimmer highlighter for a blinding glow.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs3100</span>
+        <form action="{{ url_for('view_static_product', product_type='highlighter_fenty') }}" method="post">
+            <input type="hidden" name="product_type" value="highlighter_fenty">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Highlighter 2 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/highlighter2.jpg') }}" class="card-img-top" alt="Becca Shimmering Skin Perfector">
+    <div class="card-body">
+    <h5 class="card-title">Becca Shimmering</h5>
+    <p class="card-text text-muted">Highlighter</p>
+    <p class="card-text small">Liquid highlighter for a natural, dewy glow.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs2600</span>
+        <form action="{{ url_for('view_static_product', product_type='highlighter_becca') }}" method="post">
+            <input type="hidden" name="product_type" value="highlighter_becca">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Highlighter 3 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/highlighter3.jpg') }}" class="card-img-top" alt="Anastasia Beverly Hills Highlighter">
+    <div class="card-body">
+    <h5 class="card-title">ABH Glow Kit</h5>
+    <p class="card-text text-muted">Highlighter</p>
+    <p class="card-text small">Multipan highlighter palette for versatile glow.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs2900</span>
+        <form action="{{ url_for('view_static_product', product_type='highlighter_abh') }}" method="post">
+            <input type="hidden" name="product_type" value="highlighter_abh">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Lip Gloss Section -->
+    <div class="mt-5 mb-4 category-section" data-category="Lip Gloss">
+    <h2>Lip Glosses</h2>
+    <p class="text-muted">Add shine and color to your lips with our premium lip glosses</p>
+    <div class="row g-4">
+    <!-- Lipgloss 1 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/lipgloss1.webp') }}" class="card-img-top" alt="Fenty Gloss Bomb">
+    <div class="card-body">
+    <h5 class="card-title">Fenty Gloss Bomb</h5>
+    <p class="card-text text-muted">Lip Gloss</p>
+    <p class="card-text small">Hydrating gloss with intense shine and plumping effect.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs2200</span>
+        <form action="{{ url_for('view_static_product', product_type='lipgloss_fenty') }}" method="post">
+            <input type="hidden" name="product_type" value="lipgloss_fenty">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Lipgloss 2 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/lipgloss2.jpg') }}" class="card-img-top" alt="NYX Butter Gloss">
+    <div class="card-body">
+    <h5 class="card-title">NYX Butter Gloss</h5>
+    <p class="card-text text-muted">Lip Gloss</p>
+    <p class="card-text small">Creamy, non-sticky gloss with vibrant color payoff.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1500</span>
+        <form action="{{ url_for('view_static_product', product_type='lipgloss_nyx') }}" method="post">
+            <input type="hidden" name="product_type" value="lipgloss_nyx">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Lipgloss 3 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/lipgloss3.jpg') }}" class="card-img-top" alt="Rare Beauty Stay Vulnerable Glossy Lip Balm">
+    <div class="card-body">
+    <h5 class="card-title">Rare Beauty Glossy Balm</h5>
+    <p class="card-text text-muted">Lip Gloss</p>
+    <p class="card-text small">Hydrating lip balm with a sheer, glossy finish.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1800</span>
+        <form action="{{ url_for('view_static_product', product_type='lipgloss_rare') }}" method="post">
+            <input type="hidden" name="product_type" value="lipgloss_rare">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Skincare Section -->
+    <div class="mt-5 mb-4 category-section" data-category="Skincare">
+    <h2>Skincare Essentials</h2>
+    <p class="text-muted">Nourish and protect your skin with our premium skincare products</p>
+    <div class="row g-4">
+    <!-- Skincare 1 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/skincare1.jpg') }}" class="card-img-top" alt="Ordinary Hyaluronic Acid">
+    <div class="card-body">
+    <h5 class="card-title">The Ordinary Hyaluronic Acid</h5>
+    <p class="card-text text-muted">Skincare</p>
+    <p class="card-text small">Hydration serum with multi-molecular hyaluronic complex.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1200</span>
+        <form action="{{ url_for('view_static_product', product_type='skincare_ordinary') }}" method="post">
+            <input type="hidden" name="product_type" value="skincare_ordinary">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Skincare 2 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/skincare2.jpg') }}" class="card-img-top" alt="Cetaphil Moisturizing Cream">
+    <div class="card-body">
+    <h5 class="card-title">Cetaphil Moisturizer</h5>
+    <p class="card-text text-muted">Skincare</p>
+    <p class="card-text small">Intensive moisturizing cream for dry to sensitive skin.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1600</span>
+        <form action="{{ url_for('view_static_product', product_type='skincare_cetaphil') }}" method="post">
+            <input type="hidden" name="product_type" value="skincare_cetaphil">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Skincare 3 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/skincare3.jpg') }}" class="card-img-top" alt="La Roche-Posay Sunscreen">
+    <div class="card-body">
+    <h5 class="card-title">La Roche-Posay Sunscreen</h5>
+    <p class="card-text text-muted">Skincare</p>
+    <p class="card-text small">Broad-spectrum SPF 50+ for daily sun protection.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs2000</span>
+        <form action="{{ url_for('view_static_product', product_type='skincare_laroche') }}" method="post">
+            <input type="hidden" name="product_type" value="skincare_laroche">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Other Products Section -->
+    <div class="mt-5 mb-4 category-section" data-category="Other">
+    <h2>Miscellaneous Products</h2>
+    <p class="text-muted">Unique and specialty beauty products that don't fit into standard categories</p>
+    <div class="row g-4">
+    <!-- Other Product 1 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/other1.jpg') }}" class="card-img-top" alt="Beauty Blender">
+    <div class="card-body">
+    <h5 class="card-title">Original Beauty Blender</h5>
+    <p class="card-text text-muted">Other</p>
+    <p class="card-text small">Professional makeup sponge for flawless application.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs900</span>
+        <form action="{{ url_for('view_static_product', product_type='other_beautyblender') }}" method="post">
+            <input type="hidden" name="product_type" value="other_beautyblender">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Other Product 2 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/other2.jpg') }}" class="card-img-top" alt="Makeup Brush Set">
+    <div class="card-body">
+    <h5 class="card-title">Professional Brush Set</h5>
+    <p class="card-text text-muted">Other</p>
+    <p class="card-text small">Complete set of high-quality makeup brushes.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs2500</span>
+        <form action="{{ url_for('view_static_product', product_type='other_brushset') }}" method="post">
+            <input type="hidden" name="product_type" value="other_brushset">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Other Product 3 -->
+    <div class="col-md-4 mb-4">
+    <div class="card h-100 product-card shadow-sm">
+    <img src="{{ url_for('static', filename='images/other3.jpg') }}" class="card-img-top" alt="Makeup Organizer">
+    <div class="card-body">
+    <h5 class="card-title">Acrylic Makeup Organizer</h5>
+    <p class="card-text text-muted">Other</p>
+    <p class="card-text small">Clear storage solution for your beauty essentials.</p>
+    <div class="d-flex justify-content-between align-items-center">
+        <span class="text-primary fw-bold">Rs1200</span>
+        <form action="{{ url_for('view_static_product', product_type='other_organizer') }}" method="post">
+            <input type="hidden" name="product_type" value="other_organizer">
+            <button type="submit" class="btn btn-sm btn-outline-primary">View Details</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const categoryFilter = document.getElementById('categoryFilter');
+
+if (categoryFilter) {
+categoryFilter.addEventListener('change', function() {
+const selectedCategory = this.value;
+
+// Get all product items and category sections
+const productItems = document.querySelectorAll('.product-item');
+const categorySections = document.querySelectorAll('.category-section');
+
+if (selectedCategory === 'All Categories') {
+// Show all featured products at the top
+productItems.forEach(item => {
+    item.style.display = 'block';
+});
+
+// Show all category sections
+categorySections.forEach(section => {
+    section.style.display = 'block';
+});
+} else {
+// Handle the featured products at the top
+productItems.forEach(item => {
+    const itemCategory = item.getAttribute('data-category');
+    if (itemCategory === selectedCategory) {
+        item.style.display = 'block';
+    } else {
+        item.style.display = 'none';
+    }
+});
+
+// Hide all category sections first
+categorySections.forEach(section => {
+    section.style.display = 'none';
+});
+
+// Show only the matching category section
+const matchingSection = document.querySelector(`.category-section[data-category="${selectedCategory}"]`);
+if (matchingSection) {
+    matchingSection.style.display = 'block';
+}
+}
+});
+}
+});
+</script>
+{% endblock %}
